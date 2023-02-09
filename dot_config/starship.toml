@@ -1,0 +1,98 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$python\
+${custom.readme} $cmd_duration $jobs $memory_usage $battery $time\ 
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+
+[directory]
+style = "blue"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 20
+
+[memory_usage]
+disabled = false
+threshold = 75
+symbol = "@ "
+style = "bold dimmed green"
+format = "$symbol [RAM: ${ram}( | Swap: ${swap})]($style)"
+
+[python]
+disabled = false
+format = "[$virtualenv]($style) "
+style = "bright-black"
+
+[rlang]
+disabled = false
+format = "[$symbol $version]($style) "
+symbol = "@ "
+style = "blue bold"
+
+[nodejs]
+disabled = false
+format = "[$symbol $version]($style) "
+symbol = "@ "
+style = "bold green"
+
+[package]
+disabled = false
+format = 'via [$symbol $version]($style) '
+symbol = "🎁"
+style = "208 bold"
+
+[time]
+disabled = false
+style = "bold white"
+format = "[$time]($style)"
+
+[custom.readme]
+detect_files = ['README.md', 'README', '.README.md', '.README']
+detect_extensions = ['README']
+style = "red"
+symbol = "R"
+format = "[$symbol]($style)"
